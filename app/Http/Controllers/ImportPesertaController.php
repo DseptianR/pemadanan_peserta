@@ -45,7 +45,7 @@ class ImportPesertaController extends Controller
 
     public function template()
     {
-        $path = storage_path('app/template-peserta-' . uniqid() . '.xlsx');
+        $path = sys_get_temp_dir() . '/template-peserta-' . uniqid() . '.xlsx';
 
         $bulanIni = Carbon::now()->startOfMonth();
         $bulanDepan = $bulanIni->copy()->addMonth();
@@ -161,7 +161,7 @@ class ImportPesertaController extends Controller
     {
         @set_time_limit(0);
 
-        $path = storage_path('app/export-peserta-' . uniqid('', true) . '.xlsx');
+        $path = sys_get_temp_dir() . '/export-peserta-' . uniqid('', true) . '.xlsx';
         $writer = new XlsxWriter();
 
         try {

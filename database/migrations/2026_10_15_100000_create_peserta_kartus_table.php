@@ -8,24 +8,27 @@ return new class extends Migration
 {
     public function up(): void
     {
-        if (Schema::hasTable('pemeriksaan_kartus')) {
-            return;
-        }
-
-        Schema::create('pemeriksaan_kartus', function (Blueprint $table) {
+        Schema::create('peserta_kartus', function (Blueprint $table) {
             $table->id();
-            // Mengacu ke id pada tabel Data Kartu (tanpa foreign key agar aman di struktur tabel Anda).
-            $table->unsignedBigInteger('peserta_kartu_id')->index();
-            $table->string('status');
-            $table->text('catatan')->nullable();
-            $table->string('diperiksa_oleh')->nullable();
-            $table->timestamp('diperiksa_pada')->nullable();
+            $table->unsignedInteger('no_urut')->nullable();
+            $table->string('no_kartu')->nullable()->index();
+            $table->string('nik')->nullable()->index();
+            $table->string('nama')->nullable();
+            $table->string('instansi')->nullable();
+            $table->string('peny')->nullable();
+            $table->string('jawaban_tinggal_copas')->nullable();
+            $table->string('pisat')->nullable();
+            $table->string('status_aktif')->nullable();
+            $table->string('jns_kpst')->nullable();
+            $table->string('terdaftar')->nullable();
+            $table->string('tunggakan')->nullable();
+            $table->json('data_lain')->nullable();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('pemeriksaan_kartus');
+        Schema::dropIfExists('peserta_kartus');
     }
 };

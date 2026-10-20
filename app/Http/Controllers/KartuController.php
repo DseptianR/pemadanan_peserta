@@ -70,9 +70,8 @@ class KartuController extends Controller
         $instansi = trim($request->input('instansi', ''));
         $statusAktif = trim($request->input('status_aktif', ''));
 
-        $path = storage_path(
-            'app/data-kartu-' . uniqid('', true) . '.xlsx'
-        );
+        $path = sys_get_temp_dir()
+            . '/data-kartu-' . uniqid('', true) . '.xlsx';
 
         $writer = new XlsxWriter();
 

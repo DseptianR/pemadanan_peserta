@@ -1,8 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "/api/index.php", "use": "vercel-php@0.7.1" }
-  ],
+  { "src": "/api/index.php", "use": "vercel-php@0.7.1" },
+  { "src": "/public/**", "use": "@vercel/static" }
+],
   "routes": [
     {
       "src": "/(.*\\.(?:css|js|map|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot|json|txt))",
@@ -12,7 +13,7 @@
   ],
   "env": {
     "APP_ENV": "production",
-    "APP_DEBUG": "false",
+    "APP_DEBUG": "true",
     "APP_CONFIG_CACHE": "/tmp/config.php",
     "APP_EVENTS_CACHE": "/tmp/events.php",
     "APP_PACKAGES_CACHE": "/tmp/packages.php",
